@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
-import { Student } from "../../models/Student";
-import { MatDialog } from "@angular/material/dialog";
-import { StudentDialogComponent } from "./student-dialog/student-dialog.component";
+import {Component} from '@angular/core';
+import {Student} from "../../models/Student";
+import {MatDialog} from "@angular/material/dialog";
+import {StudentDialogComponent} from "./student-dialog/student-dialog.component";
 
 
 const ELEMENT_DATA: Student[] = [
-  {id: 1, firstName: 'Nametest', lastName: 'Lastnametest', email: '@coderschool.com', createdAt: new Date()},
-  {id: 2, firstName: 'Hydrogen', lastName: 'Asd', email: '@coderschool.com', createdAt: new Date()},
-  {id: 3, firstName: 'Hydrogen', lastName: 'Asd', email: '@coderschool.com', createdAt: new Date()},
-  {id: 4, firstName: 'Hydrogen', lastName: 'Asd', email: '@coderschool.com', createdAt: new Date()},
-  {id: 5, firstName: 'Hydrogen', lastName: 'Asd', email: '@coderschool.com', createdAt: new Date()},
-  {id: 6, firstName: 'Hydrogen', lastName: 'Asd', email: '@coderschool.com', createdAt: new Date()},
-  {id: 7, firstName: 'Hydrogen', lastName: 'Asd', email: '@coderschool.com', createdAt: new Date()},
+  {id: 1, firstName: 'Nametest', lastName: 'Lastnametest', email: 'a@coderschool.com', createdAt: new Date()},
+  {id: 2, firstName: 'Juan', lastName: 'Asd', email: 'a@coderschool.com', createdAt: new Date()},
+  {id: 3, firstName: 'Pedro', lastName: 'Asd', email: 'b@coderschool.com', createdAt: new Date()},
+  {id: 4, firstName: 'Pablo', lastName: 'Asd', email: 'c@coderschool.com', createdAt: new Date()},
+  {id: 5, firstName: 'Julio', lastName: 'Asd', email: 'd@coderschool.com', createdAt: new Date()},
+  {id: 6, firstName: 'Marcos', lastName: 'Asd', email: 'f@coderschool.com', createdAt: new Date()},
+  {id: 7, firstName: 'Lila', lastName: 'Asd', email: 'g@coderschool.com', createdAt: new Date()},
 ];
 
 @Component({
@@ -26,21 +26,32 @@ export class StudentsComponent {
   constructor(private dialog: MatDialog) {
   }
 
-  addStudent() {
-    this.dialog.open(StudentDialogComponent)
+  addStudent(editStudent?: Student) {
+    this.dialog.open(StudentDialogComponent, {
+      data: {
+        editThisStudent: editStudent
+      }
+    })
       .afterClosed()
       .subscribe({
         next: (student) => {
           if (!!student) {
-            this.dataSource = [
-              ...this.dataSource,
-              {
-                ...student
+            if (editStudent) {
+              this.dataSource = this.dataSource.map((currentData) => currentData.id === editStudent.id ? {...currentData, ...student} : editStudent)
+            } else {
+                this.dataSource = [
+                  ...this.dataSource,
+                  {
+                    ...student
+                  }
+                ]
               }
-            ]
           }
         }
-  })
+      });
+  }
+  deleteStudent(studentToDelete: Student) {
+    this.dataSource = this.dataSource.filter((student) => student !== studentToDelete)
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import {Student} from "../../models/Student";
+import { Student } from "../../models/Student";
+import { MatDialog } from "@angular/material/dialog";
+import { StudentDialogComponent } from "./student-dialog/student-dialog.component";
 
 
 const ELEMENT_DATA: Student[] = [
@@ -20,5 +22,25 @@ const ELEMENT_DATA: Student[] = [
 export class StudentsComponent {
   displayedColumns: string[] = ['id', 'fullName', 'email', 'createdAt', 'actions'];
   dataSource = ELEMENT_DATA;
+
+  constructor(private dialog: MatDialog) {
+  }
+
+  addStudent() {
+    this.dialog.open(StudentDialogComponent)
+      .afterClosed()
+      .subscribe({
+        next: (student) => {
+          if (!!student) {
+            this.dataSource = [
+              ...this.dataSource,
+              {
+                ...student
+              }
+            ]
+          }
+        }
+  })
+  }
 
 }

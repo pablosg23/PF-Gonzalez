@@ -4,6 +4,14 @@
       <span appTitle>Students:</span>
     </div>
   </div>
+  <div class="row">
+    <div class="col">
+      <button mat-button color="primary" (click)="addStudent()">
+        <mat-icon fontIcon="add"></mat-icon>
+        <span>Add student</span>
+      </button>
+    </div>
+  </div>
   <div class="row mt-4">
     <div class="col">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

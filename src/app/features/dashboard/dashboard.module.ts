@@ -5,10 +5,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { StudentsModule } from "./students/students.module";
 import { UsersModule } from "./users/users.module";
 import { DashboardComponent } from './dashboard.component';
-import { MatSidenavModule } from "@angular/material/sidenav";
-import { MatButtonModule } from "@angular/material/button";
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { SharedModule } from "../shared/shared.module";
 
 
 @NgModule({
@@ -23,10 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     DashboardRoutingModule,
     StudentsModule,
     UsersModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule
+    SharedModule
   ]
 })
 export class DashboardModule { }

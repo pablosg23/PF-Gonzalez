@@ -4,6 +4,7 @@ import { MatTableModule } from '@angular/material/table';
 
 import { StudentsRoutingModule } from './students-routing.module';
 import { StudentsComponent } from './students.component';
+import {SharedModule} from "../../shared/shared.module";
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { StudentsComponent } from './students.component';
   imports: [
     CommonModule,
     StudentsRoutingModule,
-    MatTableModule
+    MatTableModule,
+    SharedModule
   ]
 })
 export class StudentsModule { }

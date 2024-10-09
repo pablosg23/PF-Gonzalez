@@ -18,7 +18,7 @@ const ELEMENT_DATA: Student[] = [
   styleUrl: './students.component.scss'
 })
 export class StudentsComponent {
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'createdAt', 'actions'];
+  displayedColumns: string[] = ['id', 'fullName', 'email', 'createdAt', 'actions'];
   dataSource = ELEMENT_DATA;
 
 }

@@ -1,29 +1,37 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Student} from "../../../models/Student";
 import {MatDialog} from "@angular/material/dialog";
 import {StudentDialogComponent} from "./student-dialog/student-dialog.component";
-
-
-const ELEMENT_DATA: Student[] = [
-  {id: "zewuhr10a9i-m2md6kf1", firstName: 'Nametest', lastName: 'Lastnametest', email: 'a@coderschool.com', createdAt: new Date()},
-  {id: "zewuhr10a9i-m2md1kf2", firstName: 'Juan', lastName: 'Asd', email: 'a@coderschool.com', createdAt: new Date()},
-  {id: "zewuhr10a9i-m2m61kf3", firstName: 'Pedro', lastName: 'Asd', email: 'b@coderschool.com', createdAt: new Date()},
-  {id: "zewuhr10a9i-m2d61kf4", firstName: 'Pablo', lastName: 'Asd', email: 'c@coderschool.com', createdAt: new Date()},
-  {id: "zewuhr10a9i-mmd61kf5", firstName: 'Julio', lastName: 'Asd', email: 'd@coderschool.com', createdAt: new Date()},
-  {id: "zewuhr10a9i-2md61kf6", firstName: 'Marcos', lastName: 'Asd', email: 'f@coderschool.com', createdAt: new Date()},
-  {id: "zewuhr10a9i-m2md61k7", firstName: 'Lila', lastName: 'Asd', email: 'g@coderschool.com', createdAt: new Date()},
-];
+import {StudentsService} from "../../../core/services/students.service";
 
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
   styleUrl: './students.component.scss'
 })
-export class StudentsComponent {
+export class StudentsComponent implements OnInit{
   displayedColumns: string[] = ['id', 'fullName', 'email', 'createdAt', 'actions'];
-  dataSource = ELEMENT_DATA;
+  dataSource: Student[] = [];
+  loadingStudents: boolean = false;
 
-  constructor(private dialog: MatDialog) {
+  constructor(
+    private dialog: MatDialog,
+    private studentsService: StudentsService
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.loadStudents();
+  }
+
+  private loadStudents() {
+    this.loadingStudents = true;
+    this.studentsService.getUsers().subscribe({
+      next: (students) => {
+        this.dataSource = students;
+        this.loadingStudents = false;
+      }
+    })
   }
 
   addStudent(editStudent?: Student) {

@@ -4,47 +4,52 @@
       <span appTitle>Students:</span>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      <button mat-button color="primary" (click)="addStudent()">
-        <mat-icon fontIcon="add"></mat-icon>
-        <span>Add student</span>
-      </button>
-    </div>
+  <div class="center-flex mt-4" *ngIf="loadingStudents; else showStudentsData">
+    <mat-spinner/>
   </div>
-  <div class="row mt-4">
-    <div class="col">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef> Id.</th>
-          <td mat-cell *matCellDef="let student"> {{ student.id }}</td>
-        </ng-container>
-        <ng-container matColumnDef="fullName">
-          <th mat-header-cell *matHeaderCellDef> Full Name</th>
-          <td mat-cell *matCellDef="let student"> {{ student | studentFullName }}</td>
-        </ng-container>
-        <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef> Email</th>
-          <td mat-cell *matCellDef="let student"> {{ student.email }}</td>
-        </ng-container>
-        <ng-container matColumnDef="createdAt">
-          <th mat-header-cell *matHeaderCellDef> Created At</th>
-          <td mat-cell *matCellDef="let student"> {{ student.createdAt | date }}</td>
-        </ng-container>
-        <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef> Created At</th>
-          <td mat-cell *matCellDef="let student">
-            <button mat-icon-button (click)="addStudent(student)">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button (click)="deleteStudent(student)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+  <ng-template #showStudentsData>
+    <div class="row">
+      <div class="col">
+        <button mat-button color="primary" (click)="addStudent()">
+          <mat-icon fontIcon="add"></mat-icon>
+          <span>Add student</span>
+        </button>
+      </div>
     </div>
-  </div>
+    <div class="row mt-4">
+      <div class="col">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id.</th>
+            <td mat-cell *matCellDef="let student"> {{ student.id }}</td>
+          </ng-container>
+          <ng-container matColumnDef="fullName">
+            <th mat-header-cell *matHeaderCellDef> Full Name</th>
+            <td mat-cell *matCellDef="let student"> {{ student | studentFullName }}</td>
+          </ng-container>
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email</th>
+            <td mat-cell *matCellDef="let student"> {{ student.email }}</td>
+          </ng-container>
+          <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef> Created At</th>
+            <td mat-cell *matCellDef="let student"> {{ student.createdAt | date }}</td>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Created At</th>
+            <td mat-cell *matCellDef="let student">
+              <button mat-icon-button (click)="addStudent(student)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="deleteStudent(student)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </div>
+  </ng-template>
 </div>

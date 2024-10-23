@@ -39,7 +39,7 @@ export class StudentDialogComponent {
       this.matDialogRef.close(
         {
           ...this.studentForm.value,
-          id: this.data?.editThisStudent ? this.data.editThisStudent.id : 1, //TODO: generate uuid
+          id: this.data?.editThisStudent ? this.data.editThisStudent.id : Math.random().toString(36).substring(2) + '-' + Date.now().toString(36), // Simple Random ID generator
           createdAt: this.data?.editThisStudent ? this.data.editThisStudent.createdAt : new Date()
         });
     }

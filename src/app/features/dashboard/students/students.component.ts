@@ -45,21 +45,42 @@ export class StudentsComponent implements OnInit{
         next: (student) => {
           if (student) {
             if (editStudent) {
-              this.dataSource = this.dataSource.map((currentData) => currentData.id === editStudent.id ? {...currentData, ...student} : currentData)
+              this.handleStudentUpdate(editStudent, student)
             } else {
-                this.dataSource = [
-                  ...this.dataSource,
-                  {
-                    ...student
-                  }
-                ]
-              }
+              this.handleStudentAddition(student);
+            }
           }
         }
       });
   }
-  deleteStudent(studentToDelete: Student) {
-    this.dataSource = this.dataSource.filter((student) => student !== studentToDelete)
+  handleStudentDeletion(studentToDelete: Student) {
+    this.loadingStudents = true;
+    this.studentsService.deleteStudent(studentToDelete).subscribe({
+      next: (students: Student[]) => {
+        this.dataSource = students;
+        this.loadingStudents = false;
+      }
+    })
+  }
+
+  handleStudentUpdate(student: Student, newData: Student) {
+    this.loadingStudents = true;
+    this.studentsService.updateStudent(student, newData).subscribe({
+      next: (students: Student[]) => {
+        this.dataSource = students;
+        this.loadingStudents = false;
+      }
+    })
+  }
+
+  handleStudentAddition(newStudent: Student) {
+    this.loadingStudents = true;
+    this.studentsService.addStudent(newStudent).subscribe({
+      next: (students: Student[]) => {
+        this.dataSource = students;
+        this.loadingStudents = false;
+      }
+    })
   }
 
 }

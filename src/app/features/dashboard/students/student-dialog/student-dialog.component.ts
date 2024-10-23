@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Student} from "../../../models/Student";
+import {Student} from "../../../../models/Student";
 
 interface StudentDialogData {
   editThisStudent?: Student

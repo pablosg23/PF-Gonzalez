@@ -26,8 +26,8 @@ export class StudentDialogComponent {
     const studentData = student || { firstName: null, lastName: null, email: null };
 
     this.studentForm = this.fb.group({
-      firstName: [studentData.firstName, Validators.required],
-      lastName: [studentData.lastName, Validators.required],
+      firstName: [studentData.firstName, [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      lastName: [studentData.lastName, [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       email: [studentData.email, [Validators.required, Validators.email]]
     });
   }

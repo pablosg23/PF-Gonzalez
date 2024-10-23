@@ -37,7 +37,7 @@ export class StudentsComponent {
         next: (student) => {
           if (!!student) {
             if (editStudent) {
-              this.dataSource = this.dataSource.map((currentData) => currentData.id === editStudent.id ? {...currentData, ...student} : editStudent)
+              this.dataSource = this.dataSource.map((currentData) => currentData.id === editStudent.id ? {...currentData, ...student} : currentData)
             } else {
                 this.dataSource = [
                   ...this.dataSource,

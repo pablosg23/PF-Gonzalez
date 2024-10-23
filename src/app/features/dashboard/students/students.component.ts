@@ -5,13 +5,13 @@ import {StudentDialogComponent} from "./student-dialog/student-dialog.component"
 
 
 const ELEMENT_DATA: Student[] = [
-  {id: 1, firstName: 'Nametest', lastName: 'Lastnametest', email: 'a@coderschool.com', createdAt: new Date()},
-  {id: 2, firstName: 'Juan', lastName: 'Asd', email: 'a@coderschool.com', createdAt: new Date()},
-  {id: 3, firstName: 'Pedro', lastName: 'Asd', email: 'b@coderschool.com', createdAt: new Date()},
-  {id: 4, firstName: 'Pablo', lastName: 'Asd', email: 'c@coderschool.com', createdAt: new Date()},
-  {id: 5, firstName: 'Julio', lastName: 'Asd', email: 'd@coderschool.com', createdAt: new Date()},
-  {id: 6, firstName: 'Marcos', lastName: 'Asd', email: 'f@coderschool.com', createdAt: new Date()},
-  {id: 7, firstName: 'Lila', lastName: 'Asd', email: 'g@coderschool.com', createdAt: new Date()},
+  {id: "zewuhr10a9i-m2md6kf1", firstName: 'Nametest', lastName: 'Lastnametest', email: 'a@coderschool.com', createdAt: new Date()},
+  {id: "zewuhr10a9i-m2md1kf2", firstName: 'Juan', lastName: 'Asd', email: 'a@coderschool.com', createdAt: new Date()},
+  {id: "zewuhr10a9i-m2m61kf3", firstName: 'Pedro', lastName: 'Asd', email: 'b@coderschool.com', createdAt: new Date()},
+  {id: "zewuhr10a9i-m2d61kf4", firstName: 'Pablo', lastName: 'Asd', email: 'c@coderschool.com', createdAt: new Date()},
+  {id: "zewuhr10a9i-mmd61kf5", firstName: 'Julio', lastName: 'Asd', email: 'd@coderschool.com', createdAt: new Date()},
+  {id: "zewuhr10a9i-2md61kf6", firstName: 'Marcos', lastName: 'Asd', email: 'f@coderschool.com', createdAt: new Date()},
+  {id: "zewuhr10a9i-m2md61k7", firstName: 'Lila', lastName: 'Asd', email: 'g@coderschool.com', createdAt: new Date()},
 ];
 
 @Component({

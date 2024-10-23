@@ -7,6 +7,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DashboardModule } from "./features/dashboard/dashboard.module";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from "./shared/shared.module";
+import {AuthModule} from "./features/auth/auth.module";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SharedModule } from "./shared/shared.module";
     AppRoutingModule,
     DashboardModule,
     NgbModule,
-    SharedModule
+    SharedModule,
+    AuthModule
   ],
   providers: [
     provideAnimationsAsync()

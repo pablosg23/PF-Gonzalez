@@ -35,7 +35,7 @@ export class StudentsComponent {
       .afterClosed()
       .subscribe({
         next: (student) => {
-          if (!!student) {
+          if (student) {
             if (editStudent) {
               this.dataSource = this.dataSource.map((currentData) => currentData.id === editStudent.id ? {...currentData, ...student} : currentData)
             } else {

@@ -21,30 +21,30 @@ export class CoursesService {
   constructor() { }
 
   getCourses(): Observable<Course[]> {
-    return of(COURSES_DB).pipe(delay(500));
+    return of(COURSES_DB).pipe(delay(500)); // Simulating a delay for async operation
   }
 
   updateCourse(course: Course, newCourse: Course): Observable<Course[]> {
-    COURSES_DB = COURSES_DB.map((currentData) => currentData.id === course.id ? {...currentData, ...newCourse} : currentData)
+    COURSES_DB = COURSES_DB.map((currentData) =>
+      currentData.id === course.id ? { ...currentData, ...newCourse } : currentData
+    );
     return of(COURSES_DB).pipe(delay(500));
   }
 
   addCourse(newCourse: Course): Observable<Course[]> {
     COURSES_DB = [
       ...COURSES_DB,
-      {
-        ...newCourse
-      }
-    ]
+      { ...newCourse }
+    ];
     return of(COURSES_DB).pipe(delay(500));
   }
 
-  deleteCourse(courseToDelete: Course):  Observable<Course[]> {
-    COURSES_DB = COURSES_DB.filter((course) => course !== courseToDelete)
+  deleteCourse(courseToDelete: Course): Observable<Course[]> {
+    COURSES_DB = COURSES_DB.filter((course) => course !== courseToDelete);
     return of(COURSES_DB).pipe(delay(500));
   }
 
   getCourseById(id: string): Observable<Course | undefined> {
-    return this.getCourses().pipe(map((course) => course.find((c)=> c.id === id)))
+    return this.getCourses().pipe(map((course) => course.find((c) => c.id === id)));
   }
 }

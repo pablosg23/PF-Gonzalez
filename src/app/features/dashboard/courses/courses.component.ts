@@ -12,7 +12,6 @@ import {CourseDialogComponent} from "./course-dialog/course-dialog.component";
 export class CoursesComponent implements OnInit{
   loadingCourses: boolean = false;
   courses: Course[] = [];
-  longText = '';
 
   constructor(
     private coursesService: CoursesService,
@@ -21,35 +20,59 @@ export class CoursesComponent implements OnInit{
   }
 
   ngOnInit() {
+    this.loadCourses();
+  }
+
+  private loadCourses() {
     this.loadingCourses = true;
     this.coursesService.getCourses().subscribe({
       next: (courses) => {
         this.courses = courses;
         this.loadingCourses = false;
-      }
-    })
+      },
+      error: () => this.loadingCourses = false // Ensure to handle errors as well
+    });
   }
 
-  addCourse(editCourse?: Course){
+  addCourse(editCourse?: Course) {
     this.dialog.open(CourseDialogComponent, {
-      data: {
-        editCourse: editCourse
-      }
+      data: { editCourse }
     })
       .afterClosed()
       .subscribe({
-        next: (student) => {
-          if (student) {
+        next: (course) => {
+          if (course) {
             if (editCourse) {
-              //this.handleStudentUpdate(editStudent, student)
+              this.handleCourseUpdate(editCourse, course);
             } else {
-              //this.handleStudentAddition(student);
+              this.handleCourseAddition(course);
             }
           }
         }
       });
   }
 
+  handleCourseUpdate(course: Course, updatedCourse: Course) {
+    this.loadingCourses = true;
+    this.coursesService.updateCourse(course, updatedCourse).subscribe({
+      next: (courses) => {
+        this.courses = courses;
+        this.loadingCourses = false;
+      },
+      error: () => this.loadingCourses = false // Handle errors properly
+    });
+  }
+
+  handleCourseAddition(newCourse: Course) {
+    this.loadingCourses = true;
+    this.coursesService.addCourse(newCourse).subscribe({
+      next: (courses) => {
+        this.courses = courses;
+        this.loadingCourses = false;
+      },
+      error: () => this.loadingCourses = false // Handle errors
+    });
+  }
 
   deleteCourse(course: Course) {
     this.loadingCourses = true;
@@ -57,8 +80,8 @@ export class CoursesComponent implements OnInit{
       next: (courses) => {
         this.courses = courses;
         this.loadingCourses = false;
-      }
-    })
+      },
+      error: () => this.loadingCourses = false // Handle errors
+    });
   }
-
 }

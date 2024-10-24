@@ -7,6 +7,7 @@ import {RegisterComponent} from "./features/auth/register/register.component";
 import {HomeComponent} from "./features/dashboard/home/home.component";
 import {StudentsComponent} from "./features/dashboard/students/students.component";
 import {StudentDetailsComponent} from "./features/dashboard/students/student-details/student-details.component";
+import {CoursesComponent} from "./features/dashboard/courses/courses.component";
 
 const routes: Routes = [
   {
@@ -48,6 +49,14 @@ const routes: Routes = [
             component: StudentDetailsComponent
           }
         ]
+      },
+      {
+        path: 'courses',
+        component: CoursesComponent
+      },
+      {
+        path: '**',
+        redirectTo: 'home'
       },
     ]
   },

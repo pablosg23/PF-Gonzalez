@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from "../../shared/shared.module";
 import { SidenavComponent } from './sidenav/sidenav.component';
 import {HomeModule} from "./home/home.module";
+import {CoursesModule} from "./courses/courses.module";
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {HomeModule} from "./home/home.module";
     StudentsModule,
     UsersModule,
     SharedModule,
-    HomeModule
+    HomeModule,
+    CoursesModule
   ]
 })
 export class DashboardModule { }

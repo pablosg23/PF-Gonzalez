@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>{{isEdition ? 'Edit' : 'Add New'}} Course</h1>
+<div class="course-form" mat-dialog-content>
+  <form [formGroup]="courseForm">
+    <div class="row">
+      <mat-form-field>
+        <mat-label>Course Name</mat-label>
+        <input formControlName="name" matInput type="text" />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field>
+        <mat-label>Details</mat-label>
+        <textarea formControlName="details" matInput type="text" style="height: 25vh;"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field>
+        <mat-label>Tags</mat-label>
+        <mat-chip-grid #chipGrid aria-label="Course Tags" [formControl]="tagsControl">
+          <mat-chip-row *ngFor="let tag of tagsControl.value" (removed)="removeTag(tag)">
+            {{ tag }}
+            <button matChipRemove [attr.aria-label]="'Remove ' + tag">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+        </mat-chip-grid>
+        <input placeholder="New tag..." [matChipInputFor]="chipGrid" (matChipInputTokenEnd)="addTag($event)" />
+      </mat-form-field>
+    </div>
+  </form>
+  <div class="row">
+    <div class="end-flex">
+      <button mat-button color="accent" (click)="closeDialog()">Cancel</button>
+      <button mat-button color="primary" [disabled]="!courseForm.valid" (click)="submitCourseData()">Save</button>
+    </div>
+  </div>
+</div>

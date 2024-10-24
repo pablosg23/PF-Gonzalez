@@ -30,7 +30,7 @@
                 <mat-chip *ngFor="let tag of course.tags">{{tag}}</mat-chip>
             </mat-chip-set>
             <div class="end-flex">
-              <button mat-icon-button>
+              <button mat-icon-button (click)="addCourse(course)">
                 <mat-icon>edit</mat-icon>
               </button>
               <button mat-icon-button (click)="deleteCourse(course)">

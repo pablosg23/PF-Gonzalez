@@ -16,11 +16,14 @@ import {
 import {MatIcon} from "@angular/material/icon";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {SharedModule} from "../../../shared/shared.module";
+import { CourseDialogComponent } from './course-dialog/course-dialog.component';
+import {MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 
 
 @NgModule({
   declarations: [
-    CoursesComponent
+    CoursesComponent,
+    CourseDialogComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +41,9 @@ import {SharedModule} from "../../../shared/shared.module";
     MatRow,
     MatRowDef,
     MatTable,
-    SharedModule
+    SharedModule,
+    MatDialogContent,
+    MatDialogTitle
   ]
 })
 export class CoursesModule { }

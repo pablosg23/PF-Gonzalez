@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CoursesService} from "../../../core/services/courses.service";
 import {Course} from "../../../models/Course";
+import {MatDialog} from "@angular/material/dialog";
+import {CourseDialogComponent} from "./course-dialog/course-dialog.component";
 
 @Component({
   selector: 'app-courses',
@@ -13,7 +15,8 @@ export class CoursesComponent implements OnInit{
   longText = '';
 
   constructor(
-    private coursesService: CoursesService
+    private coursesService: CoursesService,
+    private dialog: MatDialog
   ) {
   }
 
@@ -27,8 +30,26 @@ export class CoursesComponent implements OnInit{
     })
   }
 
-  addCourse(){
+  addCourse(editCourse?: Course){
+    this.dialog.open(CourseDialogComponent, {
+      data: {
+        editCourse: editCourse
+      }
+    })
+      .afterClosed()
+      .subscribe({
+        next: (student) => {
+          if (student) {
+            if (editCourse) {
+              //this.handleStudentUpdate(editStudent, student)
+            } else {
+              //this.handleStudentAddition(student);
+            }
+          }
+        }
+      });
   }
+
 
   deleteCourse(course: Course) {
     this.loadingCourses = true;

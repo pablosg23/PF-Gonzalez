@@ -1,0 +1,29 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-card {
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.login-actions {
+  text-align: end;
+}
+
+.register-link {
+  color: #3f51b5;
+  text-decoration: none;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}

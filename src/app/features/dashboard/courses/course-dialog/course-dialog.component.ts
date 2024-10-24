@@ -35,11 +35,10 @@ export class CourseDialogComponent {
     this.courseForm = this.fb.group({
       name: [courseData.name, Validators.required],
       details: [courseData.details, Validators.required],
-      tags: [courseData.tags] // No validators for tags, just handle array logic
+      tags: [courseData.tags]
     });
   }
 
-  // Getter to explicitly cast the control to FormControl
   get tagsControl(): FormControl {
     return this.courseForm.get('tags') as FormControl;
   }

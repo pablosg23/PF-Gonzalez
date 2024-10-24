@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {CoursesService} from "../../../core/services/courses.service";
+import {Course} from "../../../models/Course";
 
 @Component({
   selector: 'app-courses',
@@ -7,12 +9,22 @@ import {Component, OnInit} from '@angular/core';
 })
 export class CoursesComponent implements OnInit{
   loadingCourses: boolean = false;
-  longText = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolor ducimus et explicabo facere ipsam laudantium magni perspiciatis, soluta. Alias aliquam atque earum harum in iure quas repellat temporibus voluptas.';
+  courses: Course[] = [];
+  longText = '';
 
-  constructor() {
+  constructor(
+    private coursesService: CoursesService
+  ) {
   }
 
   ngOnInit() {
+    this.loadingCourses = true;
+    this.coursesService.getCourses().subscribe({
+      next: (courses) => {
+        this.courses = courses;
+        this.loadingCourses = false;
+      }
+    })
   }
 
   addCourse(){

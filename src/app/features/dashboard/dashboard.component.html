@@ -1,6 +1,6 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-
+  <app-sidenav/>
   </mat-drawer>
 
   <div class="example-sidenav-content">
@@ -12,7 +12,7 @@
       <span>My App</span>
       <span class="example-spacer"></span>
     </mat-toolbar>
-    <app-students/>
+    <router-outlet/>
   </div>
 
 </mat-drawer-container>

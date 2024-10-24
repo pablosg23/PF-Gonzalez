@@ -4,6 +4,8 @@ import {DashboardComponent} from "./features/dashboard/dashboard.component";
 import {AuthComponent} from "./features/auth/auth.component";
 import {LoginComponent} from "./features/auth/login/login.component";
 import {RegisterComponent} from "./features/auth/register/register.component";
+import {HomeComponent} from "./features/dashboard/home/home.component";
+import {StudentsComponent} from "./features/dashboard/students/students.component";
 
 const routes: Routes = [
   {
@@ -22,11 +24,21 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    children: [
+      {
+        path: 'home',
+        component: HomeComponent
+      },
+      {
+        path: 'students',
+        component: StudentsComponent
+      },
+    ]
   },
   {
     path: '**',
-    redirectTo: 'auth'
+    redirectTo: 'auth/login'
   }
 ];
 

@@ -6,11 +6,14 @@ import { StudentsModule } from "./students/students.module";
 import { UsersModule } from "./users/users.module";
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from "../../shared/shared.module";
+import { SidenavComponent } from './sidenav/sidenav.component';
+import {HomeModule} from "./home/home.module";
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    SidenavComponent
   ],
   exports: [
     DashboardComponent
@@ -20,7 +23,8 @@ import { SharedModule } from "../../shared/shared.module";
     DashboardRoutingModule,
     StudentsModule,
     UsersModule,
-    SharedModule
+    SharedModule,
+    HomeModule
   ]
 })
 export class DashboardModule { }

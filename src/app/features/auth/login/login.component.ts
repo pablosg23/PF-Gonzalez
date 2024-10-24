@@ -12,6 +12,7 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -22,6 +23,7 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       console.log('Login data: ', this.loginForm.value);
+      this.router.navigate(['/dashboard/home']);
     }
   }
 

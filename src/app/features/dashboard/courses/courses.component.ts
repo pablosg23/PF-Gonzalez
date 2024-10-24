@@ -28,7 +28,16 @@ export class CoursesComponent implements OnInit{
   }
 
   addCourse(){
+  }
 
+  deleteCourse(course: Course) {
+    this.loadingCourses = true;
+    this.coursesService.deleteCourse(course).subscribe({
+      next: (courses) => {
+        this.courses = courses;
+        this.loadingCourses = false;
+      }
+    })
   }
 
 }

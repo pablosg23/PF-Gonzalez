@@ -3,6 +3,7 @@ import {Student} from "../../../models/Student";
 import {MatDialog} from "@angular/material/dialog";
 import {StudentDialogComponent} from "./student-dialog/student-dialog.component";
 import {StudentsService} from "../../../core/services/students.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-students',
@@ -16,7 +17,9 @@ export class StudentsComponent implements OnInit{
 
   constructor(
     private dialog: MatDialog,
-    private studentsService: StudentsService
+    private studentsService: StudentsService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
   }
 
@@ -32,6 +35,10 @@ export class StudentsComponent implements OnInit{
         this.loadingStudents = false;
       }
     })
+  }
+
+  goToDetail(student: Student) {
+    this.router.navigate([student.id, 'detail'], {relativeTo: this.activatedRoute})
   }
 
   addStudent(editStudent?: Student) {

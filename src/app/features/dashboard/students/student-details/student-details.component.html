@@ -1,0 +1,23 @@
+<div class="m-4">
+  <button
+    routerLink="/dashboard/students"
+    mat-button
+    color="primary">
+    <mat-icon fontIcon="arrow_back"></mat-icon>
+    <span>All Students</span>
+  </button>
+</div>
+<div class="m-4 center-flex" *ngIf="!student; else studentDetails">
+  <mat-spinner></mat-spinner>
+</div>
+<ng-template #studentDetails>
+  <div class="m-4">
+    <mat-list role="list">
+      <mat-list-item role="listitem"><strong>Student Id:</strong> {{ student?.id }}</mat-list-item>
+      <mat-list-item role="listitem" *ngIf="student"><strong>Full Name:</strong> {{ student | studentFullName }}
+      </mat-list-item>
+      <mat-list-item role="listitem"><strong>Created at:</strong> {{ student?.createdAt | date }}</mat-list-item>
+      <mat-list-item role="listitem"><strong>Email:</strong> {{ student?.email }}</mat-list-item>
+    </mat-list>
+  </div>
+</ng-template>

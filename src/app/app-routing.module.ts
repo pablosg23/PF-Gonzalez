@@ -6,6 +6,7 @@ import {LoginComponent} from "./features/auth/login/login.component";
 import {RegisterComponent} from "./features/auth/register/register.component";
 import {HomeComponent} from "./features/dashboard/home/home.component";
 import {StudentsComponent} from "./features/dashboard/students/students.component";
+import {StudentDetailsComponent} from "./features/dashboard/students/student-details/student-details.component";
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
         path: 'register',
         component: RegisterComponent
       },
+      {
+        path: '**',
+        redirectTo: 'login'
+      },
     ]
   },
   {
@@ -32,7 +37,17 @@ const routes: Routes = [
       },
       {
         path: 'students',
-        component: StudentsComponent
+        children:
+        [
+          {
+            path: '',
+            component: StudentsComponent
+          },
+          {
+            path: ':id/detail',
+            component: StudentDetailsComponent
+          }
+        ]
       },
     ]
   },

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {delay, Observable, of} from "rxjs";
+import {delay, map, Observable, of} from "rxjs";
 import {Student} from "../../models/Student";
 
 let ELEMENT_DATA: Student[] = [ //Temporary DB call
@@ -41,5 +41,9 @@ export class StudentsService {
   deleteStudent(studentToDelete: Student):  Observable<Student[]> {
     ELEMENT_DATA = ELEMENT_DATA.filter((student) => student !== studentToDelete)
     return of(ELEMENT_DATA).pipe(delay(1000));
+  }
+
+  getById(id: string): Observable<Student | undefined> {
+    return this.getUsers().pipe(map((student) => student.find((s)=> s.id === id)))
   }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +9,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  hidePassword = true;  // Toggle variable for password visibility
 
   constructor(
     private fb: FormBuilder,
@@ -27,4 +28,7 @@ export class LoginComponent {
     }
   }
 
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
+  }
 }

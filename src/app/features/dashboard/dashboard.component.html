@@ -11,6 +11,10 @@
       </button>
       <span>My App</span>
       <span class="example-spacer"></span>
+      <span class="username" *ngIf="authUser$ | async; let authUser">
+      <mat-icon>account_circle</mat-icon>
+        {{ authUser.firstName }}
+    </span>
     </mat-toolbar>
     <router-outlet/>
   </div>

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = '2PF-Gonzalez';
+  title = '3PF-Gonzalez';
 }

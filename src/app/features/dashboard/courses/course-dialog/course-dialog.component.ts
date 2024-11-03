@@ -4,7 +4,6 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {CoursesComponent} from "../courses.component";
 import {Course} from "../../../../models/Course";
 import {MatChipInputEvent} from '@angular/material/chips';
-import {LiveAnnouncer} from '@angular/cdk/a11y';
 
 interface CourseDialogData {
   editCourse?: Course;

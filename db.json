@@ -156,5 +156,25 @@
       ]
     }
   ],
-  "classes": []
+  "classes": [
+    {
+      "id": "class1",
+      "name": "Mathematics 101",
+      "description": "An introductory course on basic algebra and geometry principles.",
+      "students": ["m2md6kf1", "m2md1kf2", "69bd"]
+    },
+    {
+      "id": "class2",
+      "name": "Physics 101",
+      "description": "Fundamentals of physics, covering concepts like motion, energy, and thermodynamics.",
+      "students": ["m2md61k7", "2md61kf6"]
+    },
+    {
+      "id": "class3",
+      "name": "Computer Science 101",
+      "description": "Introduction to programming and computer science basics, including data structures and algorithms.",
+      "students": ["mmd61kf5", "m2md1kf2", "m2m61kf3"]
+    }
+  ]
+
 }

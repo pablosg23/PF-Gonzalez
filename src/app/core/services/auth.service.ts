@@ -1,16 +1,10 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, of, throwError} from "rxjs";
+import {BehaviorSubject, catchError, map, Observable, of, switchMap, throwError} from "rxjs";
 import {AuthData} from "../../models/AuthData";
 import {User} from "../../models/User";
 import {Router} from "@angular/router";
-
-const FAKE_USER: User = {
-  email: 'pablo@pablosg.ar',
-  firstName: 'Pablo',
-  lastName: 'Gonzalez',
-  password: '1234',
-  token: 'asdasdasdasdasdasdasdasd'
-}
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -18,19 +12,36 @@ const FAKE_USER: User = {
 export class AuthService {
   private _authUser$ = new BehaviorSubject<null | User>(null);
   public authUser = this._authUser$.asObservable();
+  private baseURL = environment.apiBaseURL;
+  private apiAuthUsers: string = this.baseURL + '/users';
 
   constructor(
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) { }
 
   login(data: AuthData): Observable<User> {
-    if(data.email != FAKE_USER.email || data.password != FAKE_USER.password) {
-      return throwError(() => new Error('wrong credentials'));
-    }
-    this._authUser$.next(FAKE_USER);
-    localStorage.setItem('token', FAKE_USER.token)
-    return of(FAKE_USER);
+    return this.http.get<User[]>(
+      this.apiAuthUsers,
+      {
+        params: {
+          email: data.email,
+          password: data.password
+        }
+      }
+    ).pipe(
+      switchMap(users => {
+        const user = this.handleAuth(users);
+        if (user) {
+          return of(user); // Return user as an Observable<User>
+        } else {
+          return throwError(() => new Error('wrong credentials'));
+        }
+      }),
+      catchError(err => throwError(() => err)) // Ensure type consistency in case of errors
+    );
   }
+
 
   logout() {
     this._authUser$.next(null);
@@ -39,12 +50,27 @@ export class AuthService {
   }
 
   verifyToken(): Observable<boolean>{
-    const isValid = localStorage.getItem('token') === FAKE_USER.token;
-    if(isValid) {
-      this._authUser$.next(FAKE_USER);
+    const token = localStorage.getItem('token');
+    return this.http.get<User[]>(
+      this.apiAuthUsers,
+      {
+        params: {
+          token: token || 'null'
+        }
+      }
+    ).pipe(map(users => {
+      const user = this.handleAuth(users);
+      return !!users
+    }))
+  }
+
+  private handleAuth(users: User[]): User | null {
+    if(!!users[0]){
+      this._authUser$.next(users[0]);
+      localStorage.setItem('token', users[0].token)
+      return users[0];
     } else {
-      this._authUser$.next(null);
+      return null
     }
-    return of(isValid);
   }
 }

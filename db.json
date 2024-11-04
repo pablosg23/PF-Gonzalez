@@ -1,0 +1,13 @@
+{
+  "users": [
+    {
+      "id": "9095",
+      "email": "pablo@pablosg.ar",
+      "firstName": "Pablo",
+      "lastName": "Gonzalez",
+      "password": "1234",
+      "token": "asdasdasdasdasdasdasdasd",
+      "role": "ADMIN"
+    }
+  ]
+}

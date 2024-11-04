@@ -25,19 +25,17 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-
       this.authService.login(this.loginForm.value).subscribe({
-        next: value => {
+        next: () => {
           this.router.navigate(['/dashboard/home']);
         },
         error: err => {
-          alert(err.message)
+          alert(err.message); // This should now trigger as expected
         }
       });
     } else {
       this.loginForm.markAllAsTouched();
     }
-
   }
 
   togglePasswordVisibility() {

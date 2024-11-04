@@ -73,4 +73,8 @@ export class AuthService {
       return null
     }
   }
+
+  isAdmin(): Observable<boolean> {
+    return this.authUser.pipe(map(user => user?.role === 'ADMIN'));
+  }
 }

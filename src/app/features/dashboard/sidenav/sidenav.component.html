@@ -9,6 +9,16 @@
       <span>Home</span>
     </button>
   </mat-list-item>
+  <mat-list-item role="listitem" *ngIf="isAdmin$ | async">
+    <button
+      routerLinkActive="mat-accent"
+      routerLink="users"
+      mat-button
+      color="primary">
+      <mat-icon fontIcon="groups"></mat-icon>
+      <span>Users</span>
+    </button>
+  </mat-list-item>
   <mat-list-item role="listitem">
     <button
       routerLinkActive="mat-accent"

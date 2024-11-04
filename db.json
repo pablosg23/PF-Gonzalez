@@ -8,6 +8,15 @@
       "password": "1234",
       "token": "asdasdasdasdasdasdasdasd",
       "role": "ADMIN"
+    },
+    {
+      "id": "92e4",
+      "email": "user@pablosg.ar",
+      "firstName": "User",
+      "lastName": "LastName",
+      "password": "1234",
+      "token": "qweqweqweqweqwe",
+      "role": "USER"
     }
   ],
   "students": [

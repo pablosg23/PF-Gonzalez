@@ -49,6 +49,6 @@ export class StudentsService {
   }
 
   getById(id: string): Observable<Student | undefined> {
-    return this.getUsers().pipe(map((student) => student.find((s)=> s.id === id)))
+    return this.http.get<Student>(this.apiStudents + `/${id}`)
   }
 }

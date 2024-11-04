@@ -83,7 +83,7 @@ export class StudentsComponent implements OnInit{
   handleStudentAddition(newStudent: Student) {
     this.loadingStudents = true;
     this.studentsService.addStudent(newStudent).subscribe({
-      next: (student: Student) => {
+      next: () => {
         this.loadStudents();
         this.loadingStudents = false;
       }

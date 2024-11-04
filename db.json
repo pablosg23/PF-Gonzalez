@@ -9,5 +9,143 @@
       "token": "asdasdasdasdasdasdasdasd",
       "role": "ADMIN"
     }
-  ]
+  ],
+  "students": [
+    {
+      "id": "m2md6kf1",
+      "firstName": "Nametest",
+      "lastName": "lastNametest",
+      "email": "a@coderschool.com",
+      "createdAt": "2024-11-04T01:10:10.099Z"
+    },
+    {
+      "id": "m2md1kf2",
+      "firstName": "Juan",
+      "lastName": "Asd",
+      "email": "a@coderschool.com",
+      "createdAt": "2024-11-04T01:10:10.099Z"
+    },
+    {
+      "id": "m2m61kf3",
+      "firstName": "Pedro",
+      "lastName": "Asd",
+      "email": "b@coderschool.com",
+      "createdAt": "2024-11-04T01:10:10.099Z"
+    },
+    {
+      "id": "m2d61kf4",
+      "firstName": "Pablo",
+      "lastName": "Asd",
+      "email": "c@coderschool.com",
+      "createdAt": "2024-11-04T01:10:10.099Z"
+    },
+    {
+      "id": "mmd61kf5",
+      "firstName": "Julio",
+      "lastName": "Asd",
+      "email": "d@coderschool.com",
+      "createdAt": "2024-11-04T01:10:10.099Z"
+    },
+    {
+      "id": "2md61kf6",
+      "firstName": "Marcos",
+      "lastName": "Asd",
+      "email": "f@coderschool.com",
+      "createdAt": "2024-11-04T01:10:10.099Z"
+    },
+    {
+      "id": "m2md61k7",
+      "firstName": "Lila",
+      "lastName": "Asd",
+      "email": "g@coderschool.com",
+      "createdAt": "2024-11-04T01:10:10.099Z"
+    },
+    {
+      "id": "69bd",
+      "firstName": "Lilaaaa",
+      "lastName": "Asdasd",
+      "email": "gasddas@coderschool.com",
+      "createdAt": "2024-11-04T01:10:10.099Z"
+    },
+    {
+      "id": "c23d",
+      "firstName": "Anotherr",
+      "lastName": "User",
+      "email": "testing@test.com",
+      "createdAt": "2024-11-04T02:01:48.184Z"
+    }
+  ],
+  "courses": [
+    {
+      "id": "abc",
+      "name": "Course 1",
+      "details": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolor ducimus et explicabo facere ipsam laudantium magni perspiciatis, soluta. Alias aliquam atque earum harum in iure quas repellat temporibus voluptas.",
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3"
+      ]
+    },
+    {
+      "id": "asd",
+      "name": "Course 2",
+      "details": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolor ducimus et explicabo facere ipsam laudantium magni perspiciatis, soluta. Alias aliquam atque earum harum in iure quas repellat temporibus voluptas.",
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3"
+      ]
+    },
+    {
+      "id": "qwe",
+      "name": "Course 3",
+      "details": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolor ducimus et explicabo facere ipsam laudantium magni perspiciatis, soluta. Alias aliquam atque earum harum in iure quas repellat temporibus voluptas.",
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3"
+      ]
+    },
+    {
+      "id": "xcv",
+      "name": "Course 4",
+      "details": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolor ducimus et explicabo facere ipsam laudantium magni perspiciatis, soluta. Alias aliquam atque earum harum in iure quas repellat temporibus voluptas.",
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3"
+      ]
+    },
+    {
+      "id": "qwe",
+      "name": "Course 5",
+      "details": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolor ducimus et explicabo facere ipsam laudantium magni perspiciatis, soluta. Alias aliquam atque earum harum in iure quas repellat temporibus voluptas.",
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3"
+      ]
+    },
+    {
+      "id": "abw",
+      "name": "Course 6",
+      "details": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolor ducimus et explicabo facere ipsam laudantium magni perspiciatis, soluta. Alias aliquam atque earum harum in iure quas repellat temporibus voluptas.",
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3"
+      ]
+    },
+    {
+      "id": "aas",
+      "name": "Course 7",
+      "details": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolor ducimus et explicabo facere ipsam laudantium magni perspiciatis, soluta. Alias aliquam atque earum harum in iure quas repellat temporibus voluptas.",
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3"
+      ]
+    }
+  ],
+  "classes": []
 }

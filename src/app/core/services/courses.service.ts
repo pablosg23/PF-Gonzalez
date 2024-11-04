@@ -4,8 +4,6 @@ import {concatMap, Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 
-const lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolor ducimus et explicabo facere ipsam laudantium magni perspiciatis, soluta. Alias aliquam atque earum harum in iure quas repellat temporibus voluptas.';
-
 
 @Injectable({
   providedIn: 'root'

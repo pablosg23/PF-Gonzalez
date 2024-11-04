@@ -24,12 +24,13 @@ export class UserDialogComponent {
   }
 
   private initializeForm(user?: User): void {
-    const userData = user || { firstName: null, lastName: null, email: null };
+    const userData = user || { firstName: null, lastName: null, email: null, role: null };
 
     this.userForm = this.fb.group({
       firstName: [userData.firstName, [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       lastName: [userData.lastName, [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-      email: [userData.email, [Validators.required, Validators.email]]
+      email: [userData.email, [Validators.required, Validators.email]],
+      role: [userData.role, Validators.required]
     });
   }
 

@@ -16,10 +16,19 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12">
+      <div class="col-6">
         <mat-form-field>
           <mat-label>Email</mat-label>
           <input formControlName="email" matInput type="text"/>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Role</mat-label>
+          <mat-select formControlName="role">
+            <mat-option value="USER">User</mat-option>
+            <mat-option value="ADMIN">Admin</mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
     </div>

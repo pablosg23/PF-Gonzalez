@@ -11,7 +11,7 @@ import { UserDialogComponent } from "./user-dialog/user-dialog.component";
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'fullName', 'email', 'actions'];
+  displayedColumns: string[] = ['id', 'fullName', 'email', 'role', 'actions'];
   dataSource: User[] = [];
   loadingUsers: boolean = false;
 

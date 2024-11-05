@@ -27,7 +27,7 @@ export class StudentsComponent implements OnInit{
     this.loadStudents();
   }
 
-  private loadStudents() {
+  public loadStudents() {
     this.loadingStudents = true;
     this.studentsService.getUsers().subscribe({
       next: (students) => {

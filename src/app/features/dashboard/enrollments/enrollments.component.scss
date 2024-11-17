@@ -1,0 +1,83 @@
+/* General container for the enrollments section */
+.enrollments-container {
+  margin: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Course card container */
+.course-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Course title */
+.course-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #3f51b5;
+}
+
+/* Table styling */
+.mat-table {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+  text-align: left;
+}
+
+.mat-cell {
+  text-align: left;
+}
+
+/* Buttons for actions */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* Add student dropdown */
+.add-student {
+  margin-top: 16px;
+}
+
+/* Flex alignment for dropdown and title */
+.course-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Spinner alignment */
+.center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .course-card {
+    padding: 12px;
+  }
+
+  .course-title {
+    font-size: 1.25rem;
+  }
+
+  .mat-table {
+    font-size: 0.9rem;
+  }
+
+  .add-student {
+    margin-top: 12px;
+  }
+}

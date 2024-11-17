@@ -106,7 +106,7 @@
       ]
     },
     {
-      "id": "qwe",
+      "id": "asddads",
       "name": "Course 3",
       "details": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolor ducimus et explicabo facere ipsam laudantium magni perspiciatis, soluta. Alias aliquam atque earum harum in iure quas repellat temporibus voluptas.",
       "tags": [
@@ -126,7 +126,7 @@
       ]
     },
     {
-      "id": "qwe",
+      "id": "qwewqe",
       "name": "Course 5",
       "details": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolor ducimus et explicabo facere ipsam laudantium magni perspiciatis, soluta. Alias aliquam atque earum harum in iure quas repellat temporibus voluptas.",
       "tags": [
@@ -156,25 +156,43 @@
       ]
     }
   ],
-  "classes": [
+  "enrollments": [
     {
-      "id": "class1",
-      "name": "Mathematics 101",
-      "description": "An introductory course on basic algebra and geometry principles.",
-      "students": ["m2md6kf1", "m2md1kf2", "69bd"]
+      "id": "9919",
+      "courseId": "abc",
+      "students": [
+        "m2md6kf1",
+        "m2md1kf2"
+      ]
     },
     {
-      "id": "class2",
-      "name": "Physics 101",
-      "description": "Fundamentals of physics, covering concepts like motion, energy, and thermodynamics.",
-      "students": ["m2md61k7", "2md61kf6"]
+      "id": "9921",
+      "courseId": "asd",
+      "students": [
+        "m2md6kf1"
+      ]
     },
     {
-      "id": "class3",
-      "name": "Computer Science 101",
-      "description": "Introduction to programming and computer science basics, including data structures and algorithms.",
-      "students": ["mmd61kf5", "m2md1kf2", "m2m61kf3"]
+      "id": "9920",
+      "courseId": "aas",
+      "students": [
+        "m2m61kf3",
+        "m2md61k7"
+      ]
+    },
+    {
+      "id": "9869",
+      "courseId": "abw",
+      "students": [
+        "m2m61kf3"
+      ]
+    },
+    {
+      "id": "5169",
+      "courseId": "qwewqe",
+      "students": [
+        "m2md1kf2"
+      ]
     }
   ]
-
 }

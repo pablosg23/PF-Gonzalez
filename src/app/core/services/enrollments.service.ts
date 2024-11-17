@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { switchMap } from 'rxjs/operators';
+import {Enrollment} from "../../models/Enrollment";
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class EnrollmentsService {
 
   constructor(private http: HttpClient) {}
 
-  getEnrollments(): Observable<{ id: string; courseId: string; students: string[] }[]> {
-    return this.http.get<{ id: string; courseId: string; students: string[] }[]>(this.apiEnrollments);
+  getEnrollments(): Observable<Enrollment[]> {
+    return this.http.get<Enrollment[]>(this.apiEnrollments);
   }
 
   addEnrollment(courseId: string, studentId: string): Observable<void> {

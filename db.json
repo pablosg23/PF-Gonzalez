@@ -161,15 +161,15 @@
       "id": "9919",
       "courseId": "abc",
       "students": [
-        "m2md6kf1",
-        "m2md1kf2"
+        "m2md6kf1"
       ]
     },
     {
       "id": "9921",
       "courseId": "asd",
       "students": [
-        "m2md6kf1"
+        "m2md6kf1",
+        "m2md1kf2"
       ]
     },
     {

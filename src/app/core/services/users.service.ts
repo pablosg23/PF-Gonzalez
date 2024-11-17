@@ -25,8 +25,7 @@ export class UsersService {
 
   addUser(newUser: Omit<User, 'id'>): Observable<User> {
     return this.http.post<User>(this.apiUsers, {
-      ...newUser,
-      createdAt: new Date().toISOString(),
+      ...newUser
     });
   }
 

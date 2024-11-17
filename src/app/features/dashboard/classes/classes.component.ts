@@ -17,16 +17,14 @@ export class ClassesComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'description', 'students', 'actions'];
   dataSource: Class[] = [];
   loadingClasses = false;
-  isAdmin$: Observable<boolean>;
 
   constructor(
     private classesService: ClassesService,
     private dialog: MatDialog,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
   ) {
-    this.isAdmin$ = this.authService.isAdmin();
   }
 
   ngOnInit() {

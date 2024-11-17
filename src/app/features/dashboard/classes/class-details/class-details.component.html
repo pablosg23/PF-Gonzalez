@@ -20,7 +20,7 @@
       <mat-list-item role="listitem"><strong>Description:</strong> {{ classDetail?.description }}</mat-list-item>
       <!-- Admin-only section to display enrolled students -->
     </mat-list>
-    <div class="m-lg-3" *ngIf="isAdmin$ | async" role="listitem">
+    <div class="m-lg-3" *ngIf="authService.authUser | async | isAdmin" role="listitem">
       <strong>Enrolled Students:</strong>
       <ul *ngIf="classDetail?.students?.length; else noStudents">
         <li *ngFor="let studentId of classDetail?.students">{{ getStudentName(studentId) }}</li>

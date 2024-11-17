@@ -12,14 +12,12 @@ import {Class} from "../../../../models/Class";
 })
 export class ClassDetailsComponent implements OnInit {
   classDetail?: Class;
-  isAdmin$: Observable<boolean>;
 
   constructor(
     private route: ActivatedRoute,
     private classesService: ClassesService,
-    private authService: AuthService
+    public authService: AuthService
   ) {
-    this.isAdmin$ = this.authService.isAdmin();
   }
 
   ngOnInit(): void {

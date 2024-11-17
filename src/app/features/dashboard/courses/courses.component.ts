@@ -3,6 +3,7 @@ import {CoursesService} from "../../../core/services/courses.service";
 import {Course} from "../../../models/Course";
 import {MatDialog} from "@angular/material/dialog";
 import {CourseDialogComponent} from "./course-dialog/course-dialog.component";
+import {AuthService} from "../../../core/services/auth.service";
 
 @Component({
   selector: 'app-courses',
@@ -15,7 +16,8 @@ export class CoursesComponent implements OnInit{
 
   constructor(
     private coursesService: CoursesService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public authService: AuthService
   ) {
   }
 

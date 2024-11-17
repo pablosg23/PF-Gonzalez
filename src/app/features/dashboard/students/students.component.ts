@@ -4,6 +4,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {StudentDialogComponent} from "./student-dialog/student-dialog.component";
 import {StudentsService} from "../../../core/services/students.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {AuthService} from "../../../core/services/auth.service";
 
 @Component({
   selector: 'app-students',
@@ -19,7 +20,8 @@ export class StudentsComponent implements OnInit{
     private dialog: MatDialog,
     private studentsService: StudentsService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public authService: AuthService
   ) {
   }
 

@@ -9,7 +9,7 @@
       <span>Home</span>
     </button>
   </mat-list-item>
-  <mat-list-item role="listitem" *ngIf="isAdmin$ | async">
+  <mat-list-item role="listitem" *ngIf="authService.authUser | async | isAdmin">
     <button
       routerLinkActive="mat-accent"
       routerLink="users"
@@ -46,7 +46,7 @@
       mat-button
       color="primary">
       <mat-icon fontIcon="books"></mat-icon>
-      <span>Classes</span>
+      <span>Enrollments</span>
     </button>
   </mat-list-item>
   <mat-list-item role="listitem">

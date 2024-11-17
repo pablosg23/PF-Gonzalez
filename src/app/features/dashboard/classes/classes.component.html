@@ -1,6 +1,6 @@
 <div class="m-4">
-  <h2>Classes</h2>
-  <button mat-button color="primary" *ngIf="isAdmin$ | async" (click)="openClassDialog()">
+  <h2>Enrollments</h2>
+  <button mat-button color="primary" *ngIf="authService.authUser | async | isAdmin" (click)="openClassDialog()">
     <mat-icon>add</mat-icon>
     <span>Add Class</span>
   </button>
@@ -23,7 +23,7 @@
       <td mat-cell *matCellDef="let class"> {{ class.description }} </td>
     </ng-container>
 
-    <ng-container matColumnDef="students" *ngIf="isAdmin$ | async">
+    <ng-container matColumnDef="students" *ngIf="authService.authUser | async | isAdmin">
       <th mat-header-cell *matHeaderCellDef> Students </th>
       <td mat-cell *matCellDef="let class">
         <ul *ngFor="let studentId of class.students">
@@ -38,10 +38,10 @@
         <button mat-icon-button (click)="viewDetails(class)">
           <mat-icon>info</mat-icon>
         </button>
-        <button mat-icon-button *ngIf="isAdmin$ | async" (click)="openClassDialog(class)">
+        <button mat-icon-button *ngIf="authService.authUser | async | isAdmin" (click)="openClassDialog(class)">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button *ngIf="isAdmin$ | async" (click)="deleteClass(class)">
+        <button mat-icon-button *ngIf="authService.authUser | async | isAdmin" (click)="deleteClass(class)">
           <mat-icon>delete</mat-icon>
         </button>
       </td>

@@ -10,7 +10,7 @@
   <ng-template #showStudentsData>
     <div class="row mt-2">
       <div class="col">
-        <button mat-button color="primary" (click)="addStudent()">
+        <button mat-button color="primary" (click)="addStudent()" *ngIf="authService.authUser | async | isAdmin">
           <mat-icon fontIcon="add"></mat-icon>
           <span>Add student</span>
         </button>
@@ -41,10 +41,10 @@
               <button mat-icon-button (click)="goToDetail(student)">
                 <mat-icon>info</mat-icon>
               </button>
-              <button mat-icon-button (click)="addStudent(student)">
+              <button mat-icon-button (click)="addStudent(student)" *ngIf="authService.authUser | async | isAdmin">
                 <mat-icon>edit</mat-icon>
               </button>
-              <button mat-icon-button (click)="handleStudentDeletion(student)">
+              <button mat-icon-button (click)="handleStudentDeletion(student)" *ngIf="authService.authUser | async | isAdmin">
                 <mat-icon>delete</mat-icon>
               </button>
             </td>

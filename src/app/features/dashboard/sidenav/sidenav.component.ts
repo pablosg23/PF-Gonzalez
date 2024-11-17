@@ -8,12 +8,10 @@ import {Observable} from "rxjs";
   styleUrl: './sidenav.component.scss'
 })
 export class SidenavComponent {
-  isAdmin$: Observable<boolean>;
 
   constructor(
-    private authService: AuthService
+    public authService: AuthService
   ) {
-    this.isAdmin$ = this.authService.isAdmin();
   }
 
   logout() {

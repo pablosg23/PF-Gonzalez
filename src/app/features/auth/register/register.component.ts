@@ -40,7 +40,6 @@ export class RegisterComponent {
         },
         error: (err) => {
           this.registrationError = 'Failed to register. Please try again.';
-          console.error(err);
         }
       });
     } else {

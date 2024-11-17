@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,6 +7,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from "./shared/shared.module";
 import { provideHttpClient, withFetch } from "@angular/common/http";
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {RootReducer} from "./store";
 
 @NgModule({
   declarations: [
@@ -16,7 +19,9 @@ import { provideHttpClient, withFetch } from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forRoot(RootReducer, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [
     provideAnimationsAsync(),

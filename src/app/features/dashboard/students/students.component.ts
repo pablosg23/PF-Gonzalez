@@ -1,95 +1,30 @@
-import {Component, OnInit} from '@angular/core';
-import {Student} from "../../../models/Student";
-import {MatDialog} from "@angular/material/dialog";
-import {StudentDialogComponent} from "./student-dialog/student-dialog.component";
-import {StudentsService} from "../../../core/services/students.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {AuthService} from "../../../core/services/auth.service";
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { StudentActions } from './store/student.actions';
+import { selectStudents, selectLoading } from './store/student.selectors';
+import { Student } from '../../../models/Student';
 
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
-  styleUrl: './students.component.scss'
+  styleUrls: ['./students.component.scss'],
 })
-export class StudentsComponent implements OnInit{
-  displayedColumns: string[] = ['id', 'fullName', 'email', 'createdAt', 'actions'];
-  dataSource: Student[] = [];
-  loadingStudents: boolean = false;
+export class StudentsComponent implements OnInit {
+  students$: Observable<Student[]> = this.store.select(selectStudents);
+  loading$: Observable<boolean> = this.store.select(selectLoading);
 
-  constructor(
-    private dialog: MatDialog,
-    private studentsService: StudentsService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    public authService: AuthService
-  ) {
-  }
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.loadStudents();
+    this.store.dispatch(StudentActions.loadStudents());
   }
 
-  public loadStudents() {
-    this.loadingStudents = true;
-    this.studentsService.getUsers().subscribe({
-      next: (students) => {
-        this.dataSource = students;
-        this.loadingStudents = false;
-      }
-    })
+  addStudent(student: Omit<Student, 'id'>) {
+    this.store.dispatch(StudentActions.addStudent({ student }));
   }
 
-  goToDetail(student: Student) {
-    this.router.navigate([student.id, 'detail'], {relativeTo: this.activatedRoute})
+  deleteStudent(studentId: string) {
+    this.store.dispatch(StudentActions.deleteStudent({ studentId }));
   }
-
-  addStudent(editStudent?: Student) {
-    this.dialog.open(StudentDialogComponent, {
-      data: {
-        editThisStudent: editStudent
-      }
-    })
-      .afterClosed()
-      .subscribe({
-        next: (student) => {
-          if (student) {
-            if (editStudent) {
-              this.handleStudentUpdate(editStudent, student)
-            } else {
-              this.handleStudentAddition(student);
-            }
-          }
-        }
-      });
-  }
-  handleStudentDeletion(studentToDelete: Student) {
-    this.loadingStudents = true;
-    this.studentsService.deleteStudent(studentToDelete).subscribe({
-      next: (students: Student[]) => {
-        this.dataSource = students;
-        this.loadingStudents = false;
-      }
-    })
-  }
-
-  handleStudentUpdate(student: Student, newData: Student) {
-    this.loadingStudents = true;
-    this.studentsService.updateStudent(student, newData).subscribe({
-      next: (students: Student[]) => {
-        this.dataSource = students;
-        this.loadingStudents = false;
-      }
-    })
-  }
-
-  handleStudentAddition(newStudent: Student) {
-    this.loadingStudents = true;
-    this.studentsService.addStudent(newStudent).subscribe({
-      next: () => {
-        this.loadStudents();
-        this.loadingStudents = false;
-      }
-    })
-  }
-
 }

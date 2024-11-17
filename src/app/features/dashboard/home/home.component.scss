@@ -1,0 +1,39 @@
+.center-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.welcome-section {
+  margin-bottom: 2rem;
+}
+
+.navigation-cards {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.navigation-card {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100px;
+  padding: 20px;
+}
+
+.card-content {
+  flex-grow: 1;
+}
+
+.mat-card-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+}

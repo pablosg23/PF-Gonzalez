@@ -1,3 +1,70 @@
-<div class="center-flex center-alignment">
-  <p>Home</p>
+<div class="center-flex">
+  <div class="welcome-section">
+    <h1>Welcome to the Learning Management System</h1>
+    <p>Navigate through the sections below to manage courses, students, and enrollments.</p>
+  </div>
+
+  <div class="navigation-cards">
+    <mat-card class="navigation-card" routerLink="/dashboard/students">
+      <mat-card-header>
+        <mat-card-title>Manage Students</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="card-content">
+          <p *ngIf="authService.authUser | async | isAdmin; else notAdminDescStudents">View, add, update, or delete students in the system.</p>
+          <ng-template #notAdminDescStudents>
+            <p>View students in the system</p>
+          </ng-template>
+        </div>
+      </mat-card-content>
+      <mat-card-footer>
+        <button mat-raised-button color="primary">Go to Students</button>
+      </mat-card-footer>
+    </mat-card>
+
+    <mat-card class="navigation-card" routerLink="/dashboard/courses">
+      <mat-card-header>
+        <mat-card-title>Manage Courses</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="card-content">
+          <p *ngIf="authService.authUser | async | isAdmin; else notAdminDescCourses">View, add, update, or delete courses available for enrollment.</p>
+          <ng-template #notAdminDescCourses>
+            <p>View courses available for enrollment</p>
+          </ng-template>
+        </div>
+      </mat-card-content>
+      <mat-card-footer>
+        <button mat-raised-button color="primary">Go to Courses</button>
+      </mat-card-footer>
+    </mat-card>
+
+    <mat-card class="navigation-card" routerLink="/dashboard/classes">
+      <mat-card-header>
+        <mat-card-title>Manage Enrollments</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="card-content">
+          <p>View, add, or manage enrollments for students and courses.</p>
+        </div>
+      </mat-card-content>
+      <mat-card-footer>
+        <button mat-raised-button color="primary">Go to Enrollments</button>
+      </mat-card-footer>
+    </mat-card>
+
+    <mat-card class="navigation-card" routerLink="/dashboard/users" *ngIf="authService.authUser | async | isAdmin">
+      <mat-card-header>
+        <mat-card-title>Manage Users</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="card-content">
+          <p>View, add, delete or modify users and their roles.</p>
+        </div>
+      </mat-card-content>
+      <mat-card-footer>
+        <button mat-raised-button color="primary">Go to Users</button>
+      </mat-card-footer>
+    </mat-card>
+  </div>
 </div>

@@ -14,11 +14,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
+import { IsAdminPipe } from './pipes/is-admin.pipe';
 
 @NgModule({
   declarations: [
     StudentFullNamePipe,
-    AppTitleDirective
+    AppTitleDirective,
+    IsAdminPipe
   ],
   exports: [
     StudentFullNamePipe,
@@ -34,7 +36,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatListModule,
     MatCardModule,
     MatChipsModule,
-    MatSelectModule
+    MatSelectModule,
+    IsAdminPipe
   ],
   imports: [
     CommonModule,

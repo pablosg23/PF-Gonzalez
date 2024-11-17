@@ -51,28 +51,35 @@ export class AuthService {
 
   verifyToken(): Observable<boolean>{
     const token = localStorage.getItem('token');
-    return this.http.get<User[]>(
-      this.apiAuthUsers,
-      {
-        params: {
-          token: token || 'null'
+    if (!token) {
+      return of(false);
+    }
+
+    return this.http.get<User[]>(this.apiAuthUsers, {
+      params: { token }
+    }).pipe(
+      map(users => {
+        if (users.length > 0) {
+          const user = this.handleAuth(users);
+          return !!user;
         }
-      }
-    ).pipe(map(users => {
-      const user = this.handleAuth(users);
-      return !!users
-    }))
+        return false;
+      }),
+      catchError(() => of(false))
+    );
   }
 
   private handleAuth(users: User[]): User | null {
-    if(!!users[0]){
-      this._authUser$.next(users[0]);
-      localStorage.setItem('token', users[0].token)
-      return users[0];
-    } else {
-      return null
+    const token = localStorage.getItem('token');
+    const user = users.find(u => u.token === token);
+    if (user) {
+      this._authUser$.next(user);
+      localStorage.setItem('token', user.token);
+      return user;
     }
+    return null;
   }
+
 
   isAdmin(): Observable<boolean> {
     return this.authUser.pipe(map(user => user?.role === 'ADMIN'));

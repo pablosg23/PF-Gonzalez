@@ -8,6 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: 'home',
@@ -15,7 +16,7 @@ const routes: Routes = [
       },
       {
         path: 'users',
-        canActivate: [authGuard, roleGuard],
+        canActivate: [roleGuard],
         loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
 
       },

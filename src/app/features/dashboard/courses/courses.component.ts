@@ -4,6 +4,7 @@ import {Course} from "../../../models/Course";
 import {MatDialog} from "@angular/material/dialog";
 import {CourseDialogComponent} from "./course-dialog/course-dialog.component";
 import {AuthService} from "../../../core/services/auth.service";
+import {CourseDetailsDialogComponent} from "./course-details-dialog/course-details-dialog.component";
 
 @Component({
   selector: 'app-courses',
@@ -84,6 +85,12 @@ export class CoursesComponent implements OnInit{
         this.loadingCourses = false;
       },
       error: () => this.loadingCourses = false // Handle errors
+    });
+  }
+
+  viewCourseDetails(course: Course) {
+    this.dialog.open(CourseDetailsDialogComponent, {
+      data: { courseId: course.id, courseName: course.name }
     });
   }
 }

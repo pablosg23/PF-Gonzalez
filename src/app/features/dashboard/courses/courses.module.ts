@@ -11,11 +11,13 @@ import { MatTableModule } from "@angular/material/table";
 import { MatIconModule } from "@angular/material/icon";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatDialogModule } from "@angular/material/dialog";
+import { CourseDetailsDialogComponent } from './course-details-dialog/course-details-dialog.component';
 
 @NgModule({
   declarations: [
     CoursesComponent,
-    CourseDialogComponent
+    CourseDialogComponent,
+    CourseDetailsDialogComponent
   ],
   imports: [
     CommonModule,

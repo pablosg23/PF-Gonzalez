@@ -33,12 +33,12 @@ export class AuthService {
       switchMap(users => {
         const user = this.handleAuth(users);
         if (user) {
-          return of(user); // Return user as an Observable<User>
+          return of(user);
         } else {
           return throwError(() => new Error('wrong credentials'));
         }
       }),
-      catchError(err => throwError(() => err)) // Ensure type consistency in case of errors
+      catchError(err => throwError(() => err))
     );
   }
 
@@ -70,14 +70,13 @@ export class AuthService {
   }
 
   private handleAuth(users: User[]): User | null {
-    const token = localStorage.getItem('token');
-    const user = users.find(u => u.token === token);
-    if (user) {
-      this._authUser$.next(user);
-      localStorage.setItem('token', user.token);
-      return user;
+    if(!!users[0]){
+      this._authUser$.next(users[0]);
+      localStorage.setItem('token', users[0].token)
+      return users[0];
+    } else {
+      return null
     }
-    return null;
   }
 
 
